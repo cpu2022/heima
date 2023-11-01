@@ -29,6 +29,9 @@
             <if test="username != null">
                 username=#{username},
             </if>
+            <if test="updateUser != null">
+                update_User=#{updateUser},
+            </if>
         </set>
             where id = #{id}
     </update>

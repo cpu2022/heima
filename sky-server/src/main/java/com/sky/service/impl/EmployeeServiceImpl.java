@@ -93,8 +93,6 @@ public class EmployeeServiceImpl implements EmployeeService {
             employee.setCreateTime(LocalDateTime.now());
 
             //设置当前记录创建人id和修改人id
-            //todo 先默认后面做修改
-
             System.out.println("修改者id"+BaseContext.getCurrentId());
             employee.setCreateUser(BaseContext.getCurrentId());
             employee.setUpdateUser(BaseContext.getCurrentId());
@@ -105,7 +103,13 @@ public class EmployeeServiceImpl implements EmployeeService {
             Employee employee = new Employee();
             //把EmployeeDTO的值遍历至been(只遍历了一部分)
             BeanUtils.copyProperties(employeeDTO,employee);
+
+            //设置修改人和修改时间
+            employee.setUpdateTime(LocalDateTime.now());
+            employee.setUpdateUser(BaseContext.getCurrentId());
+
             employeeMapper.updateEmployeeAll(employee);
+
 
         }
 

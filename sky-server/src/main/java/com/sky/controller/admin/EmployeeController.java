@@ -39,6 +39,7 @@ public class EmployeeController {
     @ApiOperation("员工状态变更")
     //查询时Result带泛型，其它可以不带泛型。
     public Result startOrStop(@PathVariable("status") Integer status,Long id){
+        System.out.println("员工状态变更的线程id"+Thread.currentThread().getId());
         log.info("传过来的参数status={},id={}",status,id);
         employeeService.startOrStop(status,id);
         return Result.success();
@@ -82,6 +83,7 @@ public class EmployeeController {
     @GetMapping("/{id}")
     @ApiOperation("根据id获取员工信息")
     public Result<Employee> returnEmplyeeMsg(@PathVariable("id") Integer id){
+        System.out.println("获取员工id信息的线程id"+Thread.currentThread().getId());
         log.info("传过来的参数id={},id");
         Employee employee = employeeService.getEmployeeId(id);
         return Result.success(employee);
@@ -96,6 +98,7 @@ public class EmployeeController {
     @ApiOperation("员工修改后保存")
     @PutMapping
     public Result update(@RequestBody EmployeeDTO employeeDTO){
+        System.out.println("员工修改后保存的线程id"+Thread.currentThread().getId());
         log.info("employeeDTO的值{}",employeeDTO);
         employeeService.save(employeeDTO);
         return Result.success();
@@ -112,6 +115,7 @@ public class EmployeeController {
     @ApiOperation("员工登录")
     public Result<EmployeeLoginVO> login(@RequestBody EmployeeLoginDTO employeeLoginDTO) {
         log.info("员工登录：{}", employeeLoginDTO);
+        System.out.println("员工登录的线程id"+Thread.currentThread().getId());
         Employee employee = employeeService.login(employeeLoginDTO);
 
         //登录成功后，生成jwt令牌
