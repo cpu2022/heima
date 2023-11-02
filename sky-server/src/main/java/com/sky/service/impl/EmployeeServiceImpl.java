@@ -88,14 +88,14 @@ public class EmployeeServiceImpl implements EmployeeService {
             String defaultPassword = DigestUtils.md5DigestAsHex(PasswordConstant.DEFAULT_PASSWORD.getBytes());
             employee.setPassword(defaultPassword);
 
-            //设置当前时间以及修改时间
-            employee.setUpdateTime(LocalDateTime.now());
-            employee.setCreateTime(LocalDateTime.now());
-
-            //设置当前记录创建人id和修改人id
-            System.out.println("修改者id"+BaseContext.getCurrentId());
-            employee.setCreateUser(BaseContext.getCurrentId());
-            employee.setUpdateUser(BaseContext.getCurrentId());
+            ////设置当前时间以及修改时间
+            //employee.setUpdateTime(LocalDateTime.now());
+            //employee.setCreateTime(LocalDateTime.now());
+            //
+            ////设置当前记录创建人id和修改人id
+            //System.out.println("修改者id"+BaseContext.getCurrentId());
+            //employee.setCreateUser(BaseContext.getCurrentId());
+            //employee.setUpdateUser(BaseContext.getCurrentId());
 
             //将employee传入Mapper层
             employeeMapper.insert(employee);
@@ -104,9 +104,9 @@ public class EmployeeServiceImpl implements EmployeeService {
             //把EmployeeDTO的值遍历至been(只遍历了一部分)
             BeanUtils.copyProperties(employeeDTO,employee);
 
-            //设置修改人和修改时间
-            employee.setUpdateTime(LocalDateTime.now());
-            employee.setUpdateUser(BaseContext.getCurrentId());
+            ////设置修改人和修改时间
+            //employee.setUpdateTime(LocalDateTime.now());
+            //employee.setUpdateUser(BaseContext.getCurrentId());
 
             employeeMapper.updateEmployeeAll(employee);
 

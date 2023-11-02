@@ -6,3 +6,9 @@ sky:
     database: sky_take_out
     username: cpu
     password: 123456
+
+  alioss:
+    endpoint: oss-cn-beijing.aliyuncs.com
+    access-key-id: LTAI5tKAdhAepCYSfC3wN7Gm
+    access-key-secret: sfEKtwg0I09SIymAwDz73b2A7NoSPj
+    bucket-name: cpu2022
