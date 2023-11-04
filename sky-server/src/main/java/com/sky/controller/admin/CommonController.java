@@ -1,8 +1,10 @@
 package com.sky.controller.admin;
 
+import com.sky.constant.MessageConstant;
 import com.sky.result.Result;
 import com.sky.utils.AliOssUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.aspectj.bridge.Message;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -37,8 +39,8 @@ public class CommonController {
             return Result.success(filePath);
         } catch (IOException e) {
             log.error("文件上传失败",e);
-            return null;
         }
+        return Result.error(MessageConstant.UPLOAD_FAILED);
     }
 
 }

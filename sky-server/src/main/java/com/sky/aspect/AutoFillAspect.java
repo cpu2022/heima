@@ -78,7 +78,7 @@ public class AutoFillAspect {
                 //获得设置创建时间方法(通过反射)
                 Method setCreateTimes = entity.getClass().getDeclaredMethod(AutoFillConstant.SET_CREATE_TIME, LocalDateTime.class);
                 //获得设置创建人方法(通过反射)
-                Method setCreateUser = args.getClass().getDeclaredMethod(AutoFillConstant.SET_CREATE_USER, Long.class);
+                Method setCreateUser = entity.getClass().getDeclaredMethod(AutoFillConstant.SET_CREATE_USER, Long.class);
 
                 //调用方法
                 setUpdateTimes.invoke(entity,updateNow);
